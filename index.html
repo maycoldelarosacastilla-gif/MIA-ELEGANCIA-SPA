@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mia Elegancia: spa y salón de belleza en Pachacámac, Lima. Manicure, pedicure, corte y peinado, maquillaje y tratamiento facial. Reserva tu cita.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Mia Elegancia | Spa y Salón de Belleza en Pachacámac, Lima</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playball&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+
+<body id="inicio">
+
+  <!-- 1. Barra de promoción (como la de Soho Color) -->
+  <div class="aviso">
+    <p>✨ Disfruta nuestras promociones y reserva tu cita por WhatsApp. ¡No te lo pierdas!</p>
+  </div>
+
+  <!-- 2a. Barra fina (se va con el scroll, no queda fija) -->
+  <div class="barra-fina">
+    <div class="contenedor barra-fina-fila">
+      <a href="#sedes">📍 Sedes y horarios</a>
+      <span aria-hidden="true">|</span>
+      <a href="#promos">Promociones &amp; regalos</a>
+    </div>
+  </div>
+
+  <!-- 2b. Cabecera: logo centrado + menú (hamburguesa en móvil) -->
+  <header>
+    <div class="utp1 contenedor cabecera-fila"> <!-- utp1 = fondo -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Abrir o cerrar el menú">
+      <label for="menu-toggle" class="hamburguesa" aria-hidden="true"><span></span><span></span><span></span></label>
+
+      <a class="logo" href="#inicio" aria-label="Mia Elegancia, ir al inicio">
+        <span class="utp2">Mia Elegancia</span> <!-- utp2 = logo-marca -->
+        <span class="utp3">"Tu Momento, Tu Estilo, Tu Elegancia"</span> <!-- utp3 = eslogan -->
+      </a>
+
+      <div class="cabecera-acciones">
+        <a class="ico-link ico-sede" href="#sedes">📍 <span>Sedes</span></a>
+        <a class="ico-link" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quisiera%20hacer%20una%20consulta"
+           target="_blank" rel="noopener">💬 <span>WhatsApp</span></a>
+      </div>
+
+      <nav class="nav" aria-label="Menú principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#cuidado">Tratamientos</a>
+        <a href="#ritual">Spa</a>
+        <a href="#promos">Promociones &amp; Regalos</a>
+        <a href="#redes">Redes</a>
+        <a href="#sedes">Sedes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 3. BANNER PRINCIPAL: "Tu cambio de look empieza aquí" -->
+    <section class="hero utp6">
+      <div class="contenedor hero-grid">
+        <div class="hero-texto">
+          <p class="insignia">Spa &amp; salón de belleza</p>
+          <h1>Tu momento empieza aquí</h1>
+          <p class="utp7">Pachacámac, Lima</p> <!-- utp7 -->
+          <p class="utp8"> <!-- utp8 -->
+            Mia Elegancia es un salón de belleza dedicado al cuidado
+            personal integral: combinamos técnicas modernas con
+            productos de calidad para que cada clienta se sienta
+            segura, elegante y bien atendida en un ambiente cálido
+            y profesional.
+          </p>
+          <div class="acciones">
+            <a class="btn" href="#servicios">Ver servicios</a>
+            <a class="btn btn-claro" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quisiera%20reservar%20una%20cita"
+               target="_blank" rel="noopener">Reservar por WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="arco">
+            <picture>
+              <source type="image/webp" srcset="img/corte-320.webp 320w, img/corte-493.webp 493w"
+                      sizes="(max-width: 767px) 70vw, 380px">
+              <img src="img/corte-493.jpg" srcset="img/corte-320.jpg 320w, img/corte-493.jpg 493w"
+                   sizes="(max-width: 767px) 70vw, 380px" width="493" height="740"
+                   alt="Estilista peinando el cabello rubio de una clienta" fetchpriority="high">
+            </picture>
+          </div>
+          <div class="burbuja">
+            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=400&q=80"
+                 alt="Esmaltado de uñas rosado" width="400" height="400">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Cinta (equivale a la cinta de marcas de Soho) -->
+    <section class="cinta" aria-label="Por qué elegirnos">
+      <ul class="contenedor">
+        <li>💅 Técnicas modernas</li>
+        <li>🌸 Productos de calidad</li>
+        <li>🤍 Atención personalizada</li>
+        <li>🕯️ Ambiente cálido</li>
+      </ul>
+    </section>
+
+    <!-- 5. SERVICIOS RECOMENDADOS (como "Recomendados para ti" de Soho) -->
+    <section class="seccion utp9" id="servicios"> <!-- utp9 = servicios -->
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <p class="insignia insignia-centro">Servicios</p>
+          <h2>Recomendados para ti</h2>
+        </div>
+
+        <div class="servicios utp10"> <!-- utp10 = lista de servicios -->
+
+          <article class="tarjeta">
+            <div class="tarjeta-foto">
+              <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80"
+                   srcset="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=400&q=80 400w,
+                           https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80 800w,
+                           https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1200&q=80 1200w"
+                   sizes="(max-width: 575px) 72vw, (max-width: 991px) 44vw, 280px"
+                   alt="Manicure: esmaltado de uñas rosado" loading="lazy">
+            </div>
+            <div class="tarjeta-cuerpo">
+              <p class="categoria">Uñas</p>
+              <h3>Manicure y Pedicure</h3>
+              <!-- PRECIO DE EJEMPLO: cámbialo por el real -->
+              <p class="precio"><small>Desde</small> S/ 40.00</p>
+              <a class="btn btn-tarjeta" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quiero%20reservar%3A%20Manicure%20y%20Pedicure"
+                 target="_blank" rel="noopener">¡LO QUIERO!</a>
+            </div>
+          </article>
+
+          <article class="tarjeta">
+            <div class="tarjeta-foto pos-corte">
+              <picture>
+                <source type="image/webp" srcset="img/corte-320.webp 320w, img/corte-493.webp 493w"
+                        sizes="(max-width: 575px) 72vw, (max-width: 991px) 44vw, 280px">
+                <img src="img/corte-493.jpg" srcset="img/corte-320.jpg 320w, img/corte-493.jpg 493w"
+                     sizes="(max-width: 575px) 72vw, (max-width: 991px) 44vw, 280px"
+                     width="493" height="740" alt="Corte y peinado en el salón" loading="lazy">
+              </picture>
+            </div>
+            <div class="tarjeta-cuerpo">
+              <p class="categoria">Cabello</p>
+              <h3>Corte y peinado</h3>
+              <!-- PRECIO DE EJEMPLO -->
+              <p class="precio"><small>Desde</small> S/ 35.00</p>
+              <a class="btn btn-tarjeta" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quiero%20reservar%3A%20Corte%20y%20peinado"
+                 target="_blank" rel="noopener">¡LO QUIERO!</a>
+            </div>
+          </article>
+
+          <article class="tarjeta">
+            <div class="tarjeta-foto pos-maquillaje">
+              <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=80"
+                   srcset="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=400&q=80 400w,
+                           https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=80 800w,
+                           https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80 1200w"
+                   sizes="(max-width: 575px) 72vw, (max-width: 991px) 44vw, 280px"
+                   alt="Maquillaje profesional de ojos" loading="lazy">
+            </div>
+            <div class="tarjeta-cuerpo">
+              <p class="categoria">Rostro (BELLEZA COSMETICA)</p>
+              <h3>Maquillaje</h3>
+              <!-- PRECIO DE EJEMPLO -->
+              <p class="precio"><small>Desde</small> S/ 60.00</p>
+              <a class="btn btn-tarjeta" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quiero%20reservar%3A%20Maquillaje"
+                 target="_blank" rel="noopener">¡LO QUIERO!</a>
+            </div>
+          </article>
+
+          <article class="tarjeta">
+            <div class="tarjeta-foto pos-facial">
+              <picture>
+                <source type="image/webp" srcset="img/facial-400.webp 400w, img/facial-800.webp 800w"
+                        sizes="(max-width: 575px) 72vw, (max-width: 991px) 44vw, 280px">
+                <img src="img/facial-800.jpg" srcset="img/facial-400.jpg 400w, img/facial-800.jpg 800w"
+                     sizes="(max-width: 575px) 72vw, (max-width: 991px) 44vw, 280px"
+                     width="800" height="534" alt="Clienta recibiendo una mascarilla facial rosada" loading="lazy">
+              </picture>
+            </div>
+            <div class="tarjeta-cuerpo">
+              <p class="categoria">Rostro (LIMPIEZA PROFUNDA)</p>
+              <h3>Tratamiento facial</h3>
+              <!-- PRECIO DE EJEMPLO -->
+              <p class="precio"><small>Desde</small> S/ 70.00</p>
+              <a class="btn btn-tarjeta" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quiero%20reservar%3A%20Tratamiento%20facial"
+                 target="_blank" rel="noopener">¡LO QUIERO!</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. "Lo mejor para tu cabello" -> "Lo mejor para tu piel" -->
+    <section class="seccion fondo-rosa" id="cuidado">
+      <div class="contenedor destacado">
+        <div class="destacado-foto">
+          <picture>
+            <source type="image/webp" srcset="img/facial-400.webp 400w, img/facial-800.webp 800w"
+                    sizes="(max-width: 767px) 92vw, 520px">
+            <img src="img/facial-800.jpg" srcset="img/facial-400.jpg 400w, img/facial-800.jpg 800w"
+                 sizes="(max-width: 767px) 92vw, 520px" width="800" height="534"
+                 alt="Tratamiento facial con mascarilla rosada" loading="lazy">
+          </picture>
+        </div>
+        <div class="destacado-texto">
+          <p class="insignia">Tratamientos</p>
+          <h2>Lo mejor para tu piel</h2>
+          <p>Limpieza profunda, hidratación y un momento de calma. Nuestro tratamiento facial
+             deja tu rostro luminoso, suave y renovado.</p>
+          <!-- PRECIO DE EJEMPLO -->
+          <p class="precio precio-grande"><small>Desde</small> S/ 70.00</p>
+          <a class="btn" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quiero%20reservar%3A%20Tratamiento%20facial"
+             target="_blank" rel="noopener">Reservar tratamiento</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Gift Cards -->
+    <section class="seccion" id="promos">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <p class="insignia insignia-centro">Promociones &amp; regalos</p>
+          <h2>Comparte belleza y elegancia</h2>
+        </div>
+
+        <div class="regalos">
+          <!-- MONTOS DE EJEMPLO: cámbialos por los reales -->
+          <a class="gift gift-1" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quiero%20una%20Gift%20Card%20de%20S%2F100" target="_blank" rel="noopener">
+            <span class="gift-marca">Mia Elegancia</span>
+            <strong>Gift Card Rosa</strong>
+            <span class="gift-monto">S/ 100</span>
+          </a>
+          <a class="gift gift-2" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quiero%20una%20Gift%20Card%20de%20S%2F200" target="_blank" rel="noopener">
+            <span class="gift-marca">Mia Elegancia</span>
+            <strong>Gift Card Perla</strong>
+            <span class="gift-monto">S/ 200</span>
+          </a>
+          <a class="gift gift-3" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quiero%20una%20Gift%20Card%20de%20S%2F300" target="_blank" rel="noopener">
+            <span class="gift-marca">Mia Elegancia</span>
+            <strong>Gift Card Dorada</strong>
+            <span class="gift-monto">S/ 300</span>
+          </a>
+          <a class="gift gift-4" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quiero%20una%20Gift%20Card%20de%20S%2F500" target="_blank" rel="noopener">
+            <span class="gift-marca">Mia Elegancia</span>
+            <strong>Gift Card Elegancia</strong>
+            <span class="gift-monto">S/ 500</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Ritual de bienestar -->
+    <section class="ritual" id="ritual">
+      <div class="ritual-foto">
+        <img src="https://images.unsplash.com/photo-1630595271375-5073a6c0638b?auto=format&fit=crop&w=1400&q=80"
+             srcset="https://images.unsplash.com/photo-1630595271375-5073a6c0638b?auto=format&fit=crop&w=700&q=80 700w,
+                     https://images.unsplash.com/photo-1630595271375-5073a6c0638b?auto=format&fit=crop&w=1400&q=80 1400w,
+                     https://images.unsplash.com/photo-1630595271375-5073a6c0638b?auto=format&fit=crop&w=2000&q=80 2000w"
+             sizes="(max-width: 767px) 100vw, 50vw"
+             alt="Mujer relajada en bata blanca sobre un sofá" loading="lazy">
+      </div>
+      <div class="ritual-texto">
+        <p class="insignia">Spa &amp; bienestar</p>
+        <h2>Ritual de bienestar: manicure y spa</h2>
+        <p>Date una pausa. En Mia Elegancia cada servicio es una experiencia pensada para que
+           te relajes, te sientas bien y salgas renovada.</p>
+        <a class="btn" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quiero%20mi%20ritual%20de%20bienestar"
+           target="_blank" rel="noopener">Quiero mi momento</a>
+      </div>
+    </section>
+
+    <!-- 9. Redes (equivale al feed de Instagram de Soho) -->
+    <section class="seccion utp11" id="redes">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <p class="insignia insignia-centro">@miaelegancia</p>
+          <h2>Conócenos también por TikTok</h2>
+        </div>
+
+        <blockquote class="tiktok-embed"
+          cite="https://www.tiktok.com/@geometrikaoffice/video/7524904798194273592"
+          data-video-id="7524904798194273592">
+          <section></section>
+        </blockquote>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+      </div>
+    </section>
+
+    <!-- 10. Sedes -->
+    <section class="seccion fondo-rosa" id="sedes">
+      <div class="contenedor sede">
+        <div class="sede-foto">
+          <picture>
+            <source type="image/webp" srcset="img/ambiente.webp">
+            <img src="img/ambiente.jpg" width="335" height="597"
+                 alt="Interior del salón con espejos ovalados y sillones rosados" loading="lazy">
+          </picture>
+        </div>
+        <div class="sede-texto">
+          <p class="insignia">Sedes y horarios</p>
+          <h2>Visítanos en Pachacámac</h2>
+          <p>Te esperamos en un ambiente cálido y profesional, pensado para que vivas tu momento.</p>
+          <ul>
+            <li>📍 Pachacámac, Lima</li>
+            <li>💬 <a href="https://wa.me/51930281483" target="_blank" rel="noopener">WhatsApp: 930 281 483</a></li>
+          </ul>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Mia+Elegancia+Pachac%C3%A1mac+Lima"
+             target="_blank" rel="noopener">Ver en el mapa</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 11. Suscripción: aquí el cliente deja su correo (reemplaza al formulario de registro) -->
+  <section class="suscripcion" id="suscripcion">
+    <div class="contenedor suscripcion-grid">
+      <div>
+        <h2>¿Quieres estar al tanto de nuestras promociones?</h2>
+        <p>Déjanos tu correo y recibe ofertas, regalos y novedades de Mia Elegancia.</p>
+      </div>
+      <form action="#" method="POST">
+        <label class="solo-lector" for="suscribir">Correo electrónico</label>
+        <div class="suscripcion-fila">
+          <input type="email" id="suscribir" name="suscribir" autocomplete="email" placeholder="tucorreo@ejemplo.com" required>
+          <button type="submit">SUSCRIBIRME</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 12. Pie de página en columnas (como Soho Color, en tonos claros) -->
+  <footer>
+    <div class="contenedor">
+      <div class="pie-grid">
+        <div class="pie-marca">
+          <span class="utp2">Mia Elegancia</span>
+          <p>Spa y salón de belleza en Pachacámac, Lima.</p>
+          <ul class="redes-pie">
+            <li><a href="#" aria-label="Facebook">Facebook</a></li>
+            <li><a href="#" aria-label="Instagram">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@geometrikaoffice" target="_blank" rel="noopener" aria-label="TikTok">TikTok</a></li>
+            <li><a href="https://wa.me/51930281483" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Atención al cliente</h3>
+          <ul>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Medios de pago</a></li>
+            <li>Contacto:</li>
+            <li><a href="https://wa.me/51930281483" target="_blank" rel="noopener">WhatsApp: 930 281 483</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Sobre nosotros</h3>
+          <ul>
+            <li><a href="#ritual">Quiénes somos</a></li>
+            <li><a href="#sedes">Sedes y horarios</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Políticas y términos</h3>
+          <ul>
+            <li><a href="#">Políticas de privacidad</a></li>
+            <li><a href="#">Términos y condiciones de promociones</a></li>
+            <li><a href="#">Términos y condiciones de la web</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="copy">© 2026 Mia Elegancia — Salón de belleza. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- 13. Chat de WhatsApp flotante + volver arriba -->
+  <details class="chat">
+    <summary aria-label="Abrir chat de WhatsApp">💬</summary>
+    <div class="chat-caja">
+      <p class="chat-nombre">MIA ELEGANCIA</p>
+      <p><strong>¡Hola!</strong> Bienvenida a Mia Elegancia. Contacta a nuestras especialistas para responder tus dudas.</p>
+      <a class="btn" href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quisiera%20hacer%20una%20consulta"
+         target="_blank" rel="noopener">Enviar por WhatsApp</a>
+    </div>
+  </details>
+
+  <a class="subir" href="#inicio" aria-label="Volver al inicio">↑</a>
+
+</body>
+</html>
