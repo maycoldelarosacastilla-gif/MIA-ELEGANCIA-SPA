@@ -739,7 +739,8 @@ html.modo-oscuro .hero {
     linear-gradient(180deg, #2b1428, #3b1c38);
 }
 html.modo-oscuro .hero .contenedor { position: relative; z-index: 1; }
-html.modo-oscuro .hero::before {
+html.modo-oscuro .hero::before,
+html.modo-oscuro .portada::before {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background-image:
     radial-gradient(circle at 8% 22%, #fff 0 1px, transparent 2px),
@@ -751,7 +752,8 @@ html.modo-oscuro .hero::before {
     radial-gradient(circle at 96% 14%, #fff 0 1px, transparent 2px);
   animation: noche-titilar 4s ease-in-out infinite alternate;
 }
-html.modo-oscuro .hero::after {
+html.modo-oscuro .hero::after,
+html.modo-oscuro .portada::after {
   content: ""; position: absolute; top: 1rem; right: 5%; z-index: 0; pointer-events: none;
   width: 2.2rem; height: 2.2rem; border-radius: 50%;
   box-shadow: inset -0.65rem -0.15rem 0 0 #f3d98b;
@@ -764,7 +766,7 @@ html.modo-oscuro .arco { animation: noche-respirar 6s ease-in-out infinite; }
   50% { box-shadow: 0 0 2.8rem rgba(233, 205, 140, 0.42), var(--sombra); }
 }
 @media (prefers-reduced-motion: reduce) {
-  html.modo-oscuro .hero::before, html.modo-oscuro .arco { animation: none; }
+  html.modo-oscuro .hero::before, html.modo-oscuro .portada::before, html.modo-oscuro .arco { animation: none; }
   .modo-icono { transition: none; }
 }
 
@@ -772,7 +774,8 @@ html.modo-oscuro .arco { animation: noche-respirar 6s ease-in-out infinite; }
 /* ---------- Sedes: mapa de Google Maps (reemplaza la foto vertical) ---------- */
 .sede-foto.sede-mapa { width: min(100%, 26rem); aspect-ratio: 4 / 3; }
 .sede-foto.sede-mapa iframe { width: 100%; height: 100%; border: 0; display: block; }
-@media (min-width: 768px) { .sede-foto.sede-mapa { width: 26rem; } }
+@media (min-width: 768px) { .sede-foto.sede-mapa { width: 20rem; } .sede-texto { min-width: 0; } }
+@media (min-width: 992px) { .sede-foto.sede-mapa { width: 26rem; } }
 
 
 /* ---------- Semana 4: tabla de horarios (Sedes) ---------- */
@@ -820,3 +823,74 @@ html.modo-oscuro .galeria-item figcaption { background-color: rgba(36, 17, 35, 0
   .titulo-izq { text-align: left; }
   .titulo-izq .insignia-centro::before { display: inline-block; }
 }
+
+
+/* =========================================================
+   PORTADA (reemplaza al hero anterior)
+   Texto a la izquierda y foto a la derecha que se funde con el fondo.
+   Para mover el encuadre de la foto cambia --portada-enfoque (x y).
+   ========================================================= */
+.portada {
+  --portada-fondo: #f8e6e4;
+  --portada-enfoque: 50% 22%;
+  position: relative; display: grid; overflow: hidden;
+  background-color: var(--portada-fondo);
+}
+
+/* Celular: la foto va arriba y se desvanece hacia abajo */
+.portada-foto {
+  position: relative; overflow: hidden;
+  height: clamp(21rem, 70vw, 32rem);
+  background-color: var(--rosa-fondo);
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent);
+}
+.portada-foto img { width: 100%; height: 100%; object-fit: cover; object-position: var(--portada-enfoque); animation: portada-zoom 1.6s ease-out both; }
+.portada-contenido { position: relative; z-index: 1; margin-top: -3rem; padding-bottom: 2.5rem; }
+.portada-texto { text-align: center; }
+
+.portada h1 {
+  margin-bottom: 0.9rem;
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-weight: 600;
+  font-size: clamp(2.7rem, 9vw + 0.6rem, 4.2rem); line-height: 1.04;
+  letter-spacing: 0.02em; text-transform: uppercase; color: var(--texto);
+}
+.portada .utp7 { margin-bottom: 1rem; font-size: 0.78rem; font-style: normal; font-weight: 600; letter-spacing: 0.18rem; text-transform: uppercase; color: var(--dorado-texto); }
+.portada .utp7::before { content: ""; display: block; width: 3.5rem; height: 2px; margin: 0 auto 0.9rem; background-color: var(--dorado); }
+.portada .utp8 { max-width: 28rem; margin: 0 auto 1.6rem; color: var(--texto-suave); }
+.portada .acciones { align-items: center; gap: 0.75rem 1.5rem; }
+.portada-enlace { font-size: 0.9rem; font-weight: 500; color: var(--texto); text-decoration: underline; text-decoration-color: var(--dorado); text-decoration-thickness: 1px; text-underline-offset: 0.3rem; }
+.portada-enlace i { margin-left: 0.3rem; font-size: 0.75rem; color: var(--dorado); }
+.portada-enlace:hover, .portada-enlace:focus-visible { color: var(--rosa-fuerte); }
+
+/* Entrada suave del texto y acercamiento lento de la foto */
+@keyframes portada-zoom { from { transform: scale(1.07); } to { transform: scale(1); } }
+.portada-texto > * { animation: aparecer 0.7s ease both; }
+.portada-texto > :nth-child(2) { animation-delay: 0.08s; }
+.portada-texto > :nth-child(3) { animation-delay: 0.16s; }
+.portada-texto > :nth-child(4) { animation-delay: 0.24s; }
+.portada-texto > :nth-child(5) { animation-delay: 0.32s; }
+@media (prefers-reduced-motion: reduce) { .portada-texto > *, .portada-foto img { animation: none; } }
+
+/* Tablet y escritorio: foto a la derecha, a todo lo alto, desvanecida hacia la izquierda */
+@media (min-width: 768px) {
+  .portada { align-items: center; min-height: clamp(30rem, calc(100vh - 11rem), 46rem); min-height: clamp(30rem, calc(100svh - 11rem), 46rem); }
+  .portada-foto {
+    position: absolute; top: 0; right: 0; bottom: 0; width: 60%; height: auto;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 38%);
+    mask-image: linear-gradient(to right, transparent, #000 38%);
+  }
+  .portada-contenido { margin-top: 0; padding-block: 3rem; }
+  .portada h1 { font-size: clamp(2.7rem, 4vw + 0.6rem, 4.2rem); }
+  .portada-texto { max-width: 36rem; text-align: left; }
+  .portada .utp7::before { margin-inline: 0; }
+  .portada .utp8 { margin-inline: 0; }
+  .portada .acciones { justify-content: flex-start; }
+}
+@media (orientation: landscape) and (max-height: 520px) { .portada { min-height: 0; } }
+
+/* Modo noche */
+html.modo-oscuro .portada { --portada-fondo: #2b1428; }
+html.modo-oscuro .portada-foto img { filter: brightness(0.86) contrast(1.05); }
+html.modo-oscuro .portada::after { right: auto; left: 4%; }
+@media (max-width: 767.98px) { html.modo-oscuro .portada::after { display: none; } }
