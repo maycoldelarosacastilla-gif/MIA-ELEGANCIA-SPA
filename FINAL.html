@@ -10,11 +10,15 @@
   <title>Mia Elegancia | Spa y Salón de Belleza en Pachacámac, Lima</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playball&family=Poppins:wght@400;500;600&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Playball&family=Poppins:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
-  <script src="ejemplo.js" defer></script>
+  <link rel="stylesheet" href="mejoras.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="escena3d.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="mejoras.js" defer></script>
 </head>
 
 <body id="inicio">
@@ -49,37 +53,35 @@
 
   <main>
 
-    <section class="hero utp6">
-      <div class="contenedor hero-grid">
-        <div class="hero-texto">
+    <!-- Portada: texto a la izquierda y foto a la derecha que se funde con el fondo.
+         Foto: Ehsan Ahmadi en Unsplash (Unsplash License: uso libre, incluso comercial).
+         Para usar una foto propia, guárdala como img/portada.jpg y se carga sola (ver mejoras.js);
+         en ese caso quita el crédito del pie de página.
+         Si el rostro queda mal encuadrado, cambia --portada-enfoque en style.css. -->
+    <section class="portada utp6" aria-labelledby="titulo-portada">
+      <div class="portada-foto">
+        <img src="https://images.unsplash.com/photo-1753951494095-a9570d65dfe1?auto=format&fit=crop&q=80&w=1400"
+          srcset="https://images.unsplash.com/photo-1753951494095-a9570d65dfe1?auto=format&fit=crop&q=80&w=800 800w,
+                     https://images.unsplash.com/photo-1753951494095-a9570d65dfe1?auto=format&fit=crop&q=80&w=1400 1400w,
+                     https://images.unsplash.com/photo-1753951494095-a9570d65dfe1?auto=format&fit=crop&q=80&w=2000 2000w"
+          sizes="(max-width: 767px) 100vw, 60vw"
+          alt="Mujer con el cabello recogido y la piel luminosa, retrato de belleza" fetchpriority="high">
+      </div>
+
+      <div class="contenedor portada-contenido">
+        <div class="portada-texto">
           <p class="insignia">Spa &amp; salón de belleza</p>
-          <h1>Tu momento empieza aquí</h1>
+          <h1 id="titulo-portada">Tu momento empieza aquí</h1>
           <p class="utp7">Pachacámac, Lima</p> <!-- utp7 -->
           <p class="utp8"> <!-- utp8 -->
-            Mia Elegancia es un salón de belleza dedicado al cuidado
-            personal integral: combinamos técnicas modernas con
-            productos de calidad para que cada clienta se sienta
-            segura, elegante y bien atendida en un ambiente cálido
-            y profesional.
+            Cuidado personal integral con técnicas modernas y productos de
+            calidad, para que cada clienta se sienta segura, elegante y bien atendida.
           </p>
           <div class="acciones">
-            <a class="btn" href="#servicios">Ver servicios</a>
-            <a class="btn btn-claro"
+            <a class="btn"
               href="https://wa.me/51930281483?text=Hola%20Mia%20Elegancia%2C%20quisiera%20reservar%20una%20cita"
-              target="_blank" rel="noopener">Reservar por WhatsApp</a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="arco">
-            <img src="img/corte.jpg" sizes="(max-width: 767px) 70vw, 380px" width="493" height="740"
-                alt="Estilista cortando el cabello castaño de una clienta" fetchpriority="high">
-          </div>
-
-          <div class="burbuja">
-            <img
-              src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=400&q=80"
-              alt="Esmaltado de uñas rosado" width="400" height="400">
+              target="_blank" rel="noopener">Reservar cita</a>
+            <a class="portada-enlace" href="#servicios">Ver servicios <i class="fa-solid fa-arrow-down"></i></a>
           </div>
         </div>
       </div>
@@ -105,10 +107,7 @@
 
           <article class="tarjeta">
             <div class="tarjeta-foto">
-              <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80"
-                srcset="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=400&q=80 400w,
-                           https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80 800w,
-                           https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1200&q=80 1200w"
+              <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=80"
                 sizes="(max-width: 575px) 72vw, (max-width: 991px) 44vw, 280px" alt="Manicure: esmaltado de uñas rosado"
                 loading="lazy">
             </div>
@@ -125,8 +124,8 @@
 
           <article class="tarjeta">
             <div class="tarjeta-foto pos-corte">
-              <img src="img/corte.jpg" sizes="(max-width: 575px) 72vw, (max-width: 991px) 44vw, 280px" width="493" height="740"
-                  alt="Corte y peinado en el salón" loading="lazy">
+              <img src="https://burst.shopifycdn.com/photos/woman-stylist-cuts-hair-at-salon.jpg?width=1000&format=pjpg&exif=0&iptc=0"
+                  alt="Estilista cortando el cabello de una clienta en el salón" loading="lazy">
             </div>
             <div class="tarjeta-cuerpo">
               <p class="categoria"><i class="fa-solid fa-scissors"></i> Cabello</p>
@@ -161,8 +160,8 @@
 
           <article class="tarjeta">
             <div class="tarjeta-foto pos-facial">
-              <img src="https://images.unsplash.com/photo-1630595271375-5073a6c0638b?auto=format&fit=crop&w=800&q=80" sizes="(max-width: 575px) 72vw, (max-width: 991px) 44vw, 280px" width="800" height="534"
-                  alt="Clienta relajada en bata blanca durante su tratamiento facial" loading="lazy">
+              <img src="https://burst.shopifycdn.com/photos/spa-facial-treatment.jpg?width=1000&format=pjpg&exif=0&iptc=0"
+                  alt="Esteticista dando un tratamiento facial a una clienta en el spa" loading="lazy">
             </div>
             <div class="tarjeta-cuerpo">
               <p class="categoria"><i class="fa-solid fa-spa"></i> Rostro · limpieza</p>
@@ -251,8 +250,8 @@
     <section class="seccion fondo-rosa" id="cuidado">
       <div class="contenedor destacado">
         <div class="destacado-foto">
-          <img src="https://images.unsplash.com/photo-1630595271375-5073a6c0638b?auto=format&fit=crop&w=800&q=80" sizes="(max-width: 575px) 72vw, (max-width: 991px) 44vw, 280px" width="800" height="534"
-                  alt="Clienta relajada en bata blanca durante su tratamiento facial" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1713085085470-fba013d67e65?auto=format&fit=crop&q=80&w=1000" srcset="https://images.unsplash.com/photo-1713085085470-fba013d67e65?auto=format&fit=crop&q=80&w=600 600w, https://images.unsplash.com/photo-1713085085470-fba013d67e65?auto=format&fit=crop&q=80&w=1000 1000w, https://images.unsplash.com/photo-1713085085470-fba013d67e65?auto=format&fit=crop&q=80&w=1400 1400w" sizes="(max-width: 767px) 100vw, 50vw"
+                  alt="Esteticista profesional realizando un tratamiento facial a una clienta en cabina" loading="lazy">
         </div>
         <div class="destacado-texto">
           <p class="insignia">Tratamientos</p>
@@ -356,22 +355,22 @@
         <!-- FOTOS DE EJEMPLO: reemplázalas por fotos reales del salón -->
         <div class="galeria">
           <figure class="galeria-item g-facial">
-            <img src="https://images.unsplash.com/photo-1630595271375-5073a6c0638b?auto=format&fit=crop&w=1000&q=80"
-              alt="Clienta relajada en bata blanca durante su tratamiento facial" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1761718209835-c8586b7dcac0?auto=format&fit=crop&w=900&q=80"
+              alt="Esteticista aplicando un tratamiento facial a una clienta" loading="lazy">
             <figcaption>Tratamiento facial</figcaption>
           </figure>
           <figure class="galeria-item g-corte">
-            <img src="img/corte.jpg" width="493" height="740" alt="Estilista cortando el cabello de una clienta" loading="lazy">
+            <img src="img/corte.jpg" alt="Estilista cortando el cabello de una clienta en el salón" loading="lazy">
             <figcaption>Corte y peinado</figcaption>
           </figure>
           <figure class="galeria-item g-unas">
-            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=600&q=80"
+            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=900&q=80"
               alt="Esmaltado de uñas rosado" loading="lazy">
             <figcaption>Uñas</figcaption>
           </figure>
           <figure class="galeria-item g-maquillaje">
-            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=600&q=80"
-              alt="Maquillaje profesional de ojos" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1709477542170-f11ee7d471a0?auto=format&fit=crop&w=900&q=80"
+              alt="Maquilladora profesional maquillando a una clienta" loading="lazy">
             <figcaption>Maquillaje</figcaption>
           </figure>
         </div>
@@ -659,7 +658,7 @@
         </div>
       </div>
 
-      <p class="copy">© 2026 Mia Elegancia — Salón de belleza. Todos los derechos reservados.</p>
+      <p class="copy">© 2026 Mia Elegancia — Salón de belleza. Todos los derechos reservados.<br>Foto de portada: <a href="https://unsplash.com/photos/a-woman-poses-with-her-hair-up-PkkyNtz8U_M" target="_blank" rel="noopener">Ehsan Ahmadi / Unsplash</a>.</p>
     </div>
   </footer>
 
@@ -679,7 +678,7 @@
   <a class="subir" href="#inicio" aria-label="Volver al inicio">↑</a>
 
   <!-- ============================================================
-       MODO OSCURO "NOCHE DE SPA" (agregado al final del body)
+       MODO OSCURO "NOCHE DE SPA" 
        ejemplo.js coloca este botón como primera opción del menú (.nav)
        ============================================================ -->
   <button type="button" class="modo-toggle" id="modo-toggle" aria-pressed="false" aria-label="Activar modo noche">
