@@ -1,0 +1,100 @@
+/* MEJORAS (solo se AGREGA): fondo 3D fijo + chispas al hacer clic. No modifica style.css */
+#fondo3d{ position:fixed; inset:0; width:100%; height:100%; z-index:-1; pointer-events:none; display:block; }
+html{ background-color:var(--blanco); }
+body{ background-color:transparent; }
+html.modo-oscuro{ background-color:var(--noche-fondo); }
+html.modo-oscuro body{ background-color:transparent; }
+/* secciones con color sólido pasan a translúcidas para que se vea el fondo 3D */
+html:not(.modo-oscuro) .hero{ background:linear-gradient(180deg,rgba(253,240,246,.35),rgba(250,222,234,.35)); }
+html:not(.modo-oscuro) .cinta{ background-color:rgba(255,255,255,.55); backdrop-filter:blur(6px); }
+html:not(.modo-oscuro) .fondo-rosa{ background-color:rgba(253,240,246,.45); }
+html:not(.modo-oscuro) .ritual{ background-color:rgba(253,240,246,.5); }
+html:not(.modo-oscuro) .suscripcion{ background:linear-gradient(135deg,rgba(250,222,234,.5),rgba(253,240,246,.5)); }
+html:not(.modo-oscuro) footer{ background-color:rgba(255,255,255,.7); backdrop-filter:blur(6px); }
+html:not(.modo-oscuro) header{ background-color:rgba(255,255,255,.82); backdrop-filter:blur(10px); }
+/* chispas al hacer clic */
+.chispa{ position:fixed; z-index:99999; pointer-events:none; width:var(--s); height:var(--s); }
+.chispa-estrella{ background:linear-gradient(135deg,#fff3c4,#d9b36a 55%,#b88a3c);
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); }
+.chispa-perla{ border-radius:50%; background:radial-gradient(circle at 35% 30%,#fff,#f7c6dc 60%,#e98fb7); box-shadow:0 0 6px rgba(240,106,168,.5); }
+.chispa-aro{ border-radius:50%; border:1.5px solid #d9b36a; }
+
+/* Galería: casillas altas para que las fotos de personas no se recorten (solo se agrega, no se edita style.css) */
+.galeria{ grid-auto-rows:9rem; grid-template-areas:"facial facial" "facial facial" "corte unas" "corte maquillaje"; }
+.g-facial img{ object-position:50% 35%; }
+.g-corte img{ object-position:50% 30%; }
+@media (min-width:768px){
+  .galeria{ grid-auto-rows:13rem; grid-template-areas:"corte facial unas" "corte facial maquillaje"; }
+}
+
+/* ===== Portada: modelo sin marco + efecto aurora (solo se AGREGA) ===== */
+.hero{ overflow-x:clip; }
+.hero-visual.hero-aurora{ position:relative; width:min(88%,24rem); aspect-ratio:4/5; margin-inline:auto; }
+.modelo-wrap{ position:absolute; inset:0; z-index:2; }
+.modelo{ width:100%; height:100%; object-fit:cover; object-position:50% 18%;
+  /* difumina los bordes para que la foto se funda con la aurora (sin marco) */
+  -webkit-mask-image:radial-gradient(ellipse 70% 78% at 50% 42%,#000 58%,transparent 100%);
+          mask-image:radial-gradient(ellipse 70% 78% at 50% 42%,#000 58%,transparent 100%); }
+/* Si usas una foto ya recortada (PNG sin fondo), agrega class="modelo recorte" para quitar el difuminado */
+.modelo.recorte{ -webkit-mask-image:none; mask-image:none; object-fit:contain; object-position:50% 100%;
+  filter:drop-shadow(0 1rem 1.4rem rgba(92,31,67,.35)); }
+.hero-aurora .burbuja{ z-index:3; }
+
+.aurora{ position:absolute; inset:-14%; z-index:1; pointer-events:none; }
+.aurora span{ position:absolute; display:block; filter:blur(22px); opacity:.9;
+  border-radius:62% 38% 46% 54% / 58% 36% 64% 42%; will-change:transform,border-radius; }
+/* Modo día: oro rosado, fucsia y perla */
+.aurora .a1{ width:62%; height:56%; right:-4%; top:2%;
+  background:linear-gradient(135deg,#ffd9ea,#f06aa8 45%,#c9a24d); animation:aurora-a 11s ease-in-out infinite alternate; }
+.aurora .a2{ width:54%; height:50%; left:-2%; bottom:6%;
+  background:linear-gradient(160deg,#ffe9c9,#e98fb7 55%,#d12a9c); animation:aurora-b 13s ease-in-out infinite alternate; }
+.aurora .a3{ width:38%; height:34%; right:6%; bottom:-2%;
+  background:linear-gradient(120deg,#fff3c4,#d9b36a); opacity:.75; animation:aurora-a 9s ease-in-out infinite alternate-reverse; }
+.aurora .a4{ width:30%; height:28%; left:8%; top:4%;
+  background:linear-gradient(120deg,#fff,#f7c6dc); opacity:.8; animation:aurora-b 10s ease-in-out infinite alternate-reverse; }
+/* Modo noche: magenta profundo, violeta y brillo dorado */
+html.modo-oscuro .aurora span{ filter:blur(26px); opacity:.85; }
+html.modo-oscuro .aurora .a1{ background:linear-gradient(135deg,#c92a82,#7a1650 55%,#d9b45f); }
+html.modo-oscuro .aurora .a2{ background:linear-gradient(160deg,#8a2fa0,#c92a82 60%,#f3d98b); }
+html.modo-oscuro .aurora .a3{ background:linear-gradient(120deg,#f3d98b,#c9a24d); opacity:.6; }
+html.modo-oscuro .aurora .a4{ background:linear-gradient(120deg,#e8a0d0,#8a2fa0); opacity:.6; }
+html.modo-oscuro .modelo{ filter:brightness(.92) contrast(1.05); }
+@keyframes aurora-a{
+  0%{ transform:translate(0,0) rotate(0deg) scale(1); border-radius:62% 38% 46% 54% / 58% 36% 64% 42%; }
+  100%{ transform:translate(-6%,5%) rotate(14deg) scale(1.12); border-radius:40% 60% 62% 38% / 44% 62% 38% 56%; }
+}
+@keyframes aurora-b{
+  0%{ transform:translate(0,0) rotate(0deg) scale(1.05); border-radius:48% 52% 38% 62% / 60% 40% 60% 40%; }
+  100%{ transform:translate(7%,-5%) rotate(-16deg) scale(.94); border-radius:60% 40% 54% 46% / 38% 58% 42% 62%; }
+}
+@media (min-width:768px){ .hero-visual.hero-aurora{ width:min(100%,25rem); } }
+@media (min-width:992px){ .hero-visual.hero-aurora{ width:min(100%,28rem); } }
+@media (prefers-reduced-motion:reduce){ .aurora span{ animation:none; } }
+
+/* Modelo recortada (PNG sin fondo): figura grande anclada abajo, cabello sobre la aurora */
+.modelo.recorte{ object-fit:contain; object-position:50% 100%; transform:scale(1.12); transform-origin:50% 100%;
+  -webkit-mask-image:linear-gradient(#000 90%,transparent 100%); mask-image:linear-gradient(#000 90%,transparent 100%);
+  filter:drop-shadow(0 .8rem 1.2rem rgba(92,31,67,.30)); }
+html.modo-oscuro .modelo.recorte{ filter:drop-shadow(0 .8rem 1.4rem rgba(0,0,0,.55)) brightness(.95); }
+
+/* ===== Rediseño portada: cintas líquidas brillantes + foto con bordes suaves ===== */
+:root{ --r1:#fff0f6; --r2:#f4a3c8; --r3:#d12a9c; --r4:#c9a24d; }
+html.modo-oscuro{ --r1:#ffe9b8; --r2:#d9b45f; --r3:#c92a82; --r4:#5a1040; }
+.hero-visual.hero-aurora{ width:min(92%,26rem); aspect-ratio:4/5; }
+@media (min-width:768px){ .hero-visual.hero-aurora{ width:min(100%,30rem); } }
+@media (min-width:992px){ .hero-visual.hero-aurora{ width:min(100%,34rem); } }
+.aurora{ inset:-10%; }
+.aurora .a1,.aurora .a2{ filter:blur(40px); opacity:.55; }
+.aurora .a3,.aurora .a4{ display:none; }
+.cinta-liq{ position:absolute; display:block; filter:drop-shadow(0 .8rem 1.2rem rgba(92,31,67,.28)); }
+.cinta-liq.c1{ width:58%; right:-8%; top:-4%; animation:liq-a 9s ease-in-out infinite alternate; }
+.cinta-liq.c2{ width:42%; left:-6%; bottom:10%; animation:liq-b 11s ease-in-out infinite alternate; }
+@keyframes liq-a{ from{ transform:rotate(-6deg) translateY(0) scale(1); } to{ transform:rotate(8deg) translateY(4%) scale(1.06); } }
+@keyframes liq-b{ from{ transform:rotate(10deg) translateX(0) scale(1); } to{ transform:rotate(-8deg) translateX(5%) scale(.95); } }
+@media (prefers-reduced-motion:reduce){ .cinta-liq{ animation:none; } }
+/* bordes de la foto 100% difuminados (sin cortes rectos) */
+.modelo{ object-position:50% 25%;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 22%,#000 78%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 18%,#000 80%,transparent 100%);
+  -webkit-mask-composite:source-in;
+          mask-image:linear-gradient(to right,transparent 0,#000 22%,#000 78%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 18%,#000 80%,transparent 100%);
+          mask-composite:intersect; }
